@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function Clicker() {
   const [points, setPoints] = useState([]);
+  const [stack, setStack] = useState([]);
   function handleClick(e) {
     const { clientX, clientY } = e;
     setPoints((prev) => [
@@ -12,12 +13,21 @@ function Clicker() {
       },
     ]);
   }
-  function handleUndo() {}
+  function handleUndo() {
+    const clone = [...points];
+    const popped = clone.pop();
+    setPoints(clone);
+    setStack((prev) => [...prev, popped]);
+  }
   function handleRedo() {}
   return (
     <>
-      <button>Undo</button>
-      <button>Redo</button>
+      <button className="main-btn" onClick={handleUndo}>
+        Undo
+      </button>
+      <button className="main-btn" onClick={handleRedo}>
+        Redo
+      </button>
       <div id="click-area" onClick={handleClick}></div>
       {points?.map((item, ind) => (
         <span

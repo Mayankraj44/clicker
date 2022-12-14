@@ -75,3 +75,7 @@ button:focus-visible {
   border-radius: 50%;
   background-color: red;
 }
+.main-btn {
+  z-index: 10;
+  position: relative;
+}
