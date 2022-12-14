@@ -19,6 +19,13 @@ function Clicker() {
       <button>Undo</button>
       <button>Redo</button>
       <div id="click-area" onClick={handleClick}></div>
+      {points?.map((item, ind) => (
+        <span
+          key={ind}
+          style={{ top: item?.y - 5, left: item?.x - 5 }}
+          className="dots"
+        ></span>
+      ))}
     </>
   );
 }
