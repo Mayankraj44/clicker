@@ -73,9 +73,39 @@ button:focus-visible {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: red;
+
+  background: red;
+  animation: ripple 300ms ease-in-out;
+  transform: translate(-50%, -50%);
 }
 .main-btn {
   z-index: 10;
   position: relative;
+}
+
+@keyframes ripple {
+  0% {
+    width: 0px;
+    height: 0px;
+  }
+  20% {
+    width: 2px;
+    height: 2px;
+  }
+  40% {
+    width: 4px;
+    height: 4px;
+  }
+  60% {
+    width: 6px;
+    height: 6px;
+  }
+  80% {
+    width: 8px;
+    height: 8px;
+  }
+  100% {
+    width: 10px;
+    height: 10px;
+  }
 }

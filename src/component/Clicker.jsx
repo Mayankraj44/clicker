@@ -50,7 +50,7 @@ function Clicker() {
       {points?.map((item, ind) => (
         <span
           key={ind}
-          style={{ top: item?.y - 5, left: item?.x - 5 }}
+          style={{ top: item?.y, left: item?.x }}
           className="dots"
         ></span>
       ))}
