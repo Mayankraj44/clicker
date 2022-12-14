@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Clicker() {
+  const [points, setPoints] = useState([]);
+  function handleClick(e) {
+    const { clientX, clientY } = e;
+    setPoints((prev) => [
+      ...prev,
+      {
+        x: clientX,
+        y: clientY,
+      },
+    ]);
+  }
   function handleUndo() {}
   function handleRedo() {}
   return (
     <>
       <button>Undo</button>
       <button>Redo</button>
-      <div></div>
+      <div id="click-area" onClick={handleClick}></div>
     </>
   );
 }
