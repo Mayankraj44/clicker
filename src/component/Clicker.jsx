@@ -16,16 +16,34 @@ function Clicker() {
   function handleUndo() {
     const clone = [...points];
     const popped = clone.pop();
-    setPoints(clone);
-    setStack((prev) => [...prev, popped]);
+    if (popped) {
+      setPoints(clone);
+      setStack((prev) => [...prev, popped]);
+    }
   }
-  function handleRedo() {}
+  function handleRedo() {
+    const clone = [...stack];
+    const popped = clone.pop();
+    if (popped) {
+      setStack(clone);
+      setPoints((prev) => [...prev, popped]);
+    }
+  }
+
   return (
     <>
-      <button className="main-btn" onClick={handleUndo}>
+      <button
+        className="main-btn"
+        onClick={handleUndo}
+        disabled={!points.length}
+      >
         Undo
       </button>
-      <button className="main-btn" onClick={handleRedo}>
+      <button
+        className="main-btn"
+        onClick={handleRedo}
+        disabled={!stack.length}
+      >
         Redo
       </button>
       <div id="click-area" onClick={handleClick}></div>
